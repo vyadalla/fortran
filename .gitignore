@@ -186,3 +186,8 @@ sympy-plots-for-*.tex/
 *.bak
 *.sav
 
+# Fortran module files
+*.mod
+
+# Notebooks
+notebooks/*.ipynb_checkpoints

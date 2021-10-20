@@ -1,0 +1,11 @@
+! Namelist definition
+
+&namlon   ! limitation on the longitude
+   lon_min   =        0   
+   lon_max   =      360 
+/
+
+&namlat   ! limitation on the latitude
+   lat_min   =      -90 
+   lat_max   =       90  
+/

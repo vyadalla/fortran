@@ -1,0 +1,63 @@
+CHRISTMAS TREE
+--------------
+
+The aim of this exercise is to work with loops (for or while) in order to draw in a terminal a Christmas tree with its balls:
+
+Height=10
+
+         #
+        ###
+       #o###
+      ##o####
+     #o#####o#
+    ####o#####o
+   #####o#####o#
+  ####o#####o####
+ #o#####o#####o###
+##o#####o#####o####
+
+The program must be carried out in Fortran 90. It will take as argument the height of the tree which is a variable of the problem:
+
+Height=7
+
+      #
+     ###
+    #o###
+   ##o####
+  #o#####o#
+ ####o#####o
+#####o#####o#
+
+This parameter must be supplied at the command line when the program (for example './tree 10'). 
+
+Balls must be positioned all 6 sharps as shown below:
+
+Height=7
+
+      1
+     234
+    5!123
+   45!1234
+  5!12345!1
+ 2345!12345!
+12345!12345!1
+
+
+Usefull commands:
+-----------------
+
+Read a parameter in the program argument:
+call getarg (1, param)
+where param is a string of sufficient length to contain the value supplied as argument
+
+Convert a character string to integer or float:
+read (mychar, *) myinteger
+
+Write a character on the screen:
+write (*, '(A)') "#"
+
+Write a character on the screen without going back to the line:
+write (*, '(A)', advance = 'no') "#"
+
+Make a modulo:
+myModulo = mod (10,3)

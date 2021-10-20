@@ -1,0 +1,6 @@
+ set xlabel 'x'                                                                                                                                        
+ set xrange [0:6]
+ set ylabel 'y'                                                                                                                                        
+ set yrange [-1.2:1.2]
+ plot "03_dataxy" using 1:2 title 'sin(x)' with lines lt rgb "red"                                                                                     
+ pause -1
