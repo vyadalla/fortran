@@ -193,3 +193,5 @@ sympy-plots-for-*.tex/
 notebooks/*.ipynb_checkpoints
 notebooks/*dataxy
 notebooks/*gnuxy
+src/*dataxy
+src/*gnuxy
