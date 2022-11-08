@@ -1,10 +1,26 @@
-# learning-fortran
+---
+marp: true
+title: Introduction to structured programming with Fortran
+author: P.Y. Barriat
+description: https://dev.to/nikolab/complete-list-of-github-markdown-emoji-markup-5aia
+backgroundImage: url('assets/back.png')
+_backgroundImage: url('assets/garde.png')
+footer: 09/11/2022 | Introduction to structured programming with Fortran
+_footer: ""
+paginate: true
+_paginate: false
+---
 
-This is the repository for the training Learning Fortran
+Introduction to structured programming with `Fortran`<!--fit-->
+===
 
-### Instructor
+https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran
 
-**Pierre-Yves Barriat**
+![h:150](assets/fortran_logo.png)
+
+### Pierre-Yves Barriat
+
+##### November 09, 2022
 
 ###### CISM/CÉCI Training Sessions
 
@@ -959,6 +975,59 @@ END PROGRAM myprog
 
 <!-- _footer: "" -->
 
+<!-- Notes for presenter. -->
+<!-- 
+```fortran
+module subs
+
+contains
+
+subroutine asub (i, control)
+
+   implicit none
+
+   integer, intent (in) :: i
+   logical, intent (in) :: control
+
+   integer, save :: j = 0
+   integer :: k
+
+   j = j + i
+   if ( control ) k = 0
+   k = k + i
+
+   write (*, *) 'i, j, k=', i, j, k
+
+end subroutine asub
+
+end module subs
+
+program test_saves
+
+   use subs
+   implicit none
+
+   call asub ( 3, .TRUE. )
+   call asub ( 4, .FALSE. )
+
+end program test_saves
+```
+
+Local variable k of the subroutine is intentionally misused -- in this program it is initialized in the first call since control is TRUE, but on the second call control is FALSE, so k is not redefined. But without the save attribute k is undefined, so the using its value is illegal.
+
+```fortran
+ i, j, k=           3           3           3
+ i, j, k=           4           7           7
+```
+
+Compiling the program with ifort and aggressive optimization options, k lost its value:
+
+```fortran
+ i, j, k=           3           3           3
+ i, j, k=           4           7           4
+```
+-->
+
 ---
 
 # `internal` subprogams
@@ -1034,3 +1103,4 @@ END SUBROUTINE nag_rand
 - Fortran is still ideally suited for numerical computations in engineering and science
   - most new language features have been added since F95
   - "High Performance Fortran" includes capabilities designed for parallel processing
+
