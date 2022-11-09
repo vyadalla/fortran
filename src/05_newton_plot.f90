@@ -5,7 +5,7 @@ program plot
   real(4) :: fx, x
   integer :: i
 
-  open (112,file='04_gnuxy')
+  open (112,file='05_gnuxy.gpl')
 
   write(112,*) 'set grid'
   write(112,*) 'set xzeroaxis'
@@ -34,7 +34,7 @@ program plot
 
   ! Generate x-y pairs for the graph
 
-  open (112,file='04_dataxy_1')
+  open (112,file='05_dataxy.dat')
   do i=-40,40
     x  = .1*i
     fx = x**3+x-10.0
@@ -44,7 +44,7 @@ program plot
 
   print *, ' Hit the Return (Enter) key to continue'
 
-  call system ('gnuplot 04_gnuxy')
+  call system ('gnuplot 05_gnuxy.gpl')
   stop
 
 end

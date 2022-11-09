@@ -1,3 +1,0 @@
-ifort -o OceanGrideChange.exe 8_OceanGrideChange.f90 -I${EBROOTNETCDFMINFORTRAN}/include -L${EBROOTNETCDFMINFORTRAN}/lib -lnetcdff
-
-gfortran -ffree-line-length-none -o OceanGrideChange.exe 8_OceanGrideChange.f90 -I${EBROOTNETCDFMINFORTRAN}/include -L${EBROOTNETCDFMINFORTRAN}/lib -lnetcdff

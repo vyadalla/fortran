@@ -6,14 +6,15 @@
       WRITE(*,*) 'Enter the value for the radius of a sphere.'
       READ(*,*) radius
  
-ccccc PI value
-      pi =  
+ccccc PI & radius values
+      radius =
+      pi =
 ccccc PI value
       WRITE(*,*) 'The value of pi is ', pi
 
 ccccc Air & volume       
       area =
-      volume = 
+      volume =
 ccccc Air & volume 
       
       WRITE(*,*) 'For a radius ', radius 

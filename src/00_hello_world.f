@@ -1,8 +1,9 @@
-      ! Ce programme affiche "Bonjour, le monde!"
+C     Display "Hello world!"
+C
       program hello_world
 
-         implicit none ! important
+         implicit none
 
-         print *, "Bonjour, le monde!"
+         print *, "Hello world!"
 
       end program hello_world

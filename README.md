@@ -84,7 +84,9 @@ no dynamic memory allocation, old & obsolete constructs, “spaghetti” code, e
 
 FORTRAN is a compiled language (like C) so the source code (what you write) must be converted into machine code before it can be executed (e.g. Make command)
 
-![h:400](assets/build_fortran.png)
+![h:350](assets/build_fortran.png)
+
+> Fortran 77 source code [hello_world.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/00_hello_world.f)
 
 ---
 
@@ -157,25 +159,6 @@ Arrays of any type must be declared:
 
 - `DIMENSION A(3,5)` - declares a 3 x 5 array
 - `CHARACTER*30 NAME(50)` - directly declares a character array with 30 character strings in each element
-
----
-
-# Data Type Declarations
-
-FORTRAN >90 allows user defined types
-
-```fortran
-TYPE my_variable
-  character(30)           :: name
-  integer                 :: id
-  real(8)                 :: value
-  integer, dimension(3,3) :: dimIndex
-END TYPE variable
-
-type(my_variable) var
-var%name = "salinity"
-var%id   = 1
-```
 
 ---
 
@@ -259,9 +242,10 @@ Numeric expressions are up-cast to the highest data type in the expression accor
 
 and smaller byte size *(low)* to larger byte size *(high)*
 
-## Example:
+## Examples:
 
-> fortran 77 source code [arith.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/01_arith.f)
+> Fortran 77 source code [arith.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/01_arith.f)
+> Fortran 77 source code [sphere.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/02_sphere.f)
 
 ---
 
@@ -507,6 +491,8 @@ Today, most I/O is to and from a file: it requires more extensive I/O capabiliti
 - data reading & writing with `READ` & `WRITE`
 - can use **unformatted** `READ` & `WRITE` if no human readable data are involved (much faster access, smaller files)
 
+> Fortran 77 source code [plot.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/03_plot.f)
+
 ---
 
 # `OPEN` & `CLOSE` example
@@ -617,6 +603,10 @@ It is possible to pre-define the structure of input and output data using `NAMEL
 
 > This is not part of standard F77 but it is included in >F90
 
+---
+
+# `NAMELIST` - cont'd
+
 On input, the `NAMELIST` data must be structured as follows:
 
 ```fortran
@@ -628,7 +618,8 @@ On input, the `NAMELIST` data must be structured as follows:
 /
 ```
 
-<!-- _footer: "" -->
+> Fortran 90 source code [namelist.f90](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/04_namelist.f90)
+> Namelist file [namelist.def](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/04_namelist.def)
 
 ---
 
@@ -736,8 +727,6 @@ AV = WEIGHT*AVG3(A1,F2,B2)
 
 Subroutine is invoked using the `CALL` statement
 
-`SUBROUTINE` example:
-
 ```fortran
 SUBROUTINE AVG3S(A,B,C,AVERAGE)
 AVERAGE=(A+B+C)/3
@@ -752,7 +741,9 @@ CALL AVG3S(A1,F2,B2,AVR)
 RESULT = WEIGHT*AVR
 ```
 
-> any returned values must be returned through argument list
+Any returned values must be returned through argument list
+
+> Fortran 90 source code [newton.f90](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/05_newton.f90)
 
 ---
 
@@ -899,6 +890,8 @@ The `COMMON` statement allows variables to have a more extensive scope than othe
 
 With > F90, it's better to use the `MODULE` subprogram instead of the `COMMON` statement
 
+> Fortran 77 source code [common.f](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/06_common.f) - Fortran 90 source code [module.f90](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/06_module.f90)
+
 ---
 
 # Modular programming (>F90)
@@ -912,6 +905,25 @@ Modular programming is about separating parts of programs into independent and i
 - *separation of concerns*
 
 The principle is that making significant parts of the code independent, replaceable and independently testable makes your programs **more maintainable**
+
+---
+
+# Data Type Declarations
+
+FORTRAN >90 allows user derived types
+
+```fortran
+TYPE my_variable
+  character(30)           :: name
+  integer                 :: id
+  real(8)                 :: value
+  integer, dimension(3,3) :: dimIndex
+END TYPE variable
+
+type(my_variable) var
+var%name = "salinity"
+var%id   = 1
+```
 
 ---
 
@@ -1023,6 +1035,28 @@ END SUBROUTINE nag_rand
 ```
 
 <!-- _footer: "" -->
+
+---
+
+# Fortran Compiler and libraries
+
+Examples:
+
+```bash
+module load netCDF-Fortran/4.5.3-gompi-2021b
+gfortran -ffree-line-length-none \
+-o OceanGrideChange.exe 07_OceanGrideChange.f90 \
+-I${EBROOTNETCDFMINFORTRAN}/include -L${EBROOTNETCDFMINFORTRAN}/lib -lnetcdff
+```
+
+```bash
+module load netCDF-Fortran/4.5.3-iimpi-2021b
+ifort -O3 \
+-o OceanGrideChange.exe 07_OceanGrideChange.f90 \
+-I${EBROOTNETCDFMINFORTRAN}/include -L${EBROOTNETCDFMINFORTRAN}/lib -lnetcdff
+```
+
+> Fortran 90 source code [OceanGrideChange.f90](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/07_OceanGrideChange.f90) with the input file [input.nc](https://gogs.elic.ucl.ac.be/pbarriat/learning-fortran/src/master/src/07_input.nc)
 
 ---
 

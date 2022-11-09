@@ -2,7 +2,7 @@ program newton
 
   implicit none
 
-! Use a Newton iteration to solve the equation
+! Use a Newton iteration to solve the equation --> x**3+x-10
 !
 !  x     -    current approximation to the solution
 !  f(x)  -    polynomial function
