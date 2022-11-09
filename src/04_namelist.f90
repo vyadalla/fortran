@@ -10,7 +10,7 @@ PROGRAM test_namelist
   write(*,*) 'Before:'
   call print_res(lon_min, lon_max, lat_min, lat_max)
 
-  open(161,file='07_namelist.def',status='old',form='formatted')
+  open(161,file='04_namelist.def',status='old',form='formatted')
   read(161,NML=namlon)
 
   write(*,*) 'Between:'

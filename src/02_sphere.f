@@ -6,8 +6,7 @@
       WRITE(*,*) 'Enter the value for the radius of a sphere.'
       READ(*,*) radius
  
-ccccc PI & radius values
-      radius =
+ccccc PI value
       pi =
 ccccc PI value
       WRITE(*,*) 'The value of pi is ', pi
